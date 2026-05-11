@@ -307,7 +307,7 @@
                                     <small>/hari</small>
                                 </h4>
 
-                                <a href="{{ route('detail.mobil', $mobil->slug) }}">
+                                <a href="{{ route('detail.mobil', $mobil->id_mobil) }}">
                                     Detail
                                 </a>
 

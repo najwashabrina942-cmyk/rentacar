@@ -188,7 +188,7 @@
                         <span>★ {{ $mobil->rating }}</span>
                     </div>
 
-                    <a href="{{ route('detail.mobil', $mobil->slug) }}" class="btn-detail">
+                    <a href="{{ route('detail.mobil', $mobil->id_mobil) }}" class="btn-detail">
                         Detail
                     </a>
                 </div>

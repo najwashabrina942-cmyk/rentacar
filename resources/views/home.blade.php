@@ -73,7 +73,7 @@
 
             <div class="hero-buttons">
                 <a href="{{ route('daftar.mobil') }}" class="btn-primary">Lihat Mobil</a>
-               <a href="{{ route('booking.mobil', 'toyota-innova-reborn') }}" class="btn-white">Booking Sekarang</a>
+               <a href="{{ route('booking', 1) }}" class="btn-white">Booking Sekarang</a>
             </div>
 
             <div class="stats">
@@ -107,6 +107,8 @@
 
         <div class="car-grid">
             @foreach ($mobils as $mobil)
+            @if($mobil->id)
+           
                 <div class="car-card">
                     <div class="car-image">
                         <img src="{{ asset('images/' . $mobil->gambar) }}" alt="{{ $mobil->nama_mobil }}">
@@ -133,10 +135,11 @@
                         <span>★ {{ $mobil->rating }}</span>
                     </div>
 
-                    <a href="{{ route('detail.mobil', $mobil->slug) }}" class="btn-detail">
+                    <a href="{{ route('detail.mobil', $mobil->id_mobil) }}" class="btn-detail">
                         Lihat Detail
                     </a>
                 </div>
+            @endif
             @endforeach
         </div>
     </section>

@@ -122,7 +122,7 @@
                     </div>
                 </div>
 
-                <form action="{{ route('booking.store', $mobil->slug) }}" method="POST">
+                <form action="{{ route('booking.store', $mobil->id_mobil) }}" method="POST">
                     @csrf
 
                     <div class="booking-two-col">

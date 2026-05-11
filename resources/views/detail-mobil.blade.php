@@ -13,6 +13,7 @@
 
     @auth
     <nav class="user-navbar">
+
         <div class="user-brand">
             <div class="logo">R</div>
             <span>RentaCar</span>
@@ -28,9 +29,11 @@
         </div>
 
         <div class="user-profile-wrapper">
+
             <span class="bell">🔔</span>
 
             <div class="user-profile" onclick="toggleProfileMenu()">
+
                 <div class="avatar">
                     {{ strtoupper(substr(Auth::user()->name ?? 'U', 0, 1)) }}
                 </div>
@@ -39,10 +42,13 @@
                     <h4>{{ Auth::user()->name ?? 'User' }}</h4>
                     <p>User</p>
                 </div>
+
             </div>
 
             <div class="profile-dropdown" id="profileDropdown">
+
                 <div class="dropdown-head">
+
                     <div class="avatar">
                         {{ strtoupper(substr(Auth::user()->name ?? 'U', 0, 1)) }}
                     </div>
@@ -52,9 +58,12 @@
                         <span>User</span>
                         <p>{{ Auth::user()->email ?? 'email@gmail.com' }}</p>
                     </div>
+
                 </div>
 
-                <a href="#" class="edit-profile-btn">Edit Profile</a>
+                <a href="#" class="edit-profile-btn">
+                    Edit Profile
+                </a>
 
                 <div class="dropdown-menu">
                     <a href="#">Lihat Profile</a>
@@ -66,15 +75,22 @@
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="dropdown-logout">Logout</button>
+
+                    <button type="submit" class="dropdown-logout">
+                        Logout
+                    </button>
                 </form>
+
             </div>
+
         </div>
+
     </nav>
     @endauth
 
     @guest
     <nav class="navbar">
+
         <div class="brand">
             <div class="logo">R</div>
             <span>RentaCar</span>
@@ -86,31 +102,48 @@
         </div>
 
         <div class="nav-actions">
-            <a href="{{ route('login') }}" class="btn-outline">Login</a>
-            <a href="{{ route('register') }}" class="btn-primary-small">Daftar Sekarang</a>
+            <a href="{{ route('login') }}" class="btn-outline">
+                Login
+            </a>
+
+            <a href="{{ route('register') }}" class="btn-primary-small">
+                Daftar Sekarang
+            </a>
         </div>
+
     </nav>
     @endguest
 
     <section class="detail-hero">
         <h1>Detail Mobil</h1>
-        <p>8.230+ mobil dari MPV, SUV, Sedan, hingga Sport. Pilih sesuai kebutuhan Anda.</p>
+
+        <p>
+            8.230+ mobil dari MPV, SUV, Sedan,
+            hingga Sport. Pilih sesuai kebutuhan Anda.
+        </p>
     </section>
 
     <section class="detail-container">
 
         <div class="detail-left">
+
             <div class="main-car-image">
-                <img src="{{ asset('images/' . $mobil->gambar) }}" alt="{{ $mobil->nama_mobil }}">
+                <img
+                    src="{{ asset('images/' . $mobil->gambar) }}"
+                    alt="{{ $mobil->nama_mobil }}"
+                >
             </div>
 
             <div class="description-box">
+
                 <h3>DESKRIPSI</h3>
+
                 <p>{{ $mobil->deskripsi }}</p>
 
                 <h3>SPESIFIKASI</h3>
 
                 <div class="spec-grid">
+
                     <div>
                         <span>Transmisi</span>
                         <b>{{ $mobil->transmisi }}</b>
@@ -130,11 +163,15 @@
                         <span>Tahun</span>
                         <b>{{ $mobil->tahun }}</b>
                     </div>
+
                 </div>
+
             </div>
+
         </div>
 
         <div class="detail-right">
+
             <div class="booking-card">
 
                 <span class="detail-badge {{ $mobil->status_mobil == 'disewa' ? 'badge-red' : '' }}">
@@ -167,12 +204,20 @@
 
                         <div class="date-box">
                             <label>Tanggal Mulai</label>
-                            <input type="date" id="tanggal_mulai">
+
+                            <input
+                                type="date"
+                                id="tanggal_mulai"
+                            >
                         </div>
 
                         <div class="date-box">
                             <label>Tanggal Selesai</label>
-                            <input type="date" id="tanggal_selesai">
+
+                            <input
+                                type="date"
+                                id="tanggal_selesai"
+                            >
                         </div>
 
                     </div>
@@ -194,18 +239,26 @@
                 </div>
 
                 @auth
-                <a href="#" onclick="lanjutBooking()" class="booking-btn">
+                <a
+                    href="#"
+                    onclick="lanjutBooking()"
+                    class="booking-btn"
+                >
                     Booking Sekarang
                 </a>
                 @endauth
 
                 @guest
-                <a href="{{ route('login') }}" class="booking-btn">
+                <a
+                    href="{{ route('login') }}"
+                    class="booking-btn"
+                >
                     Login untuk Booking
                 </a>
                 @endguest
 
             </div>
+
         </div>
 
     </section>
@@ -270,14 +323,16 @@
             return;
         }
 
-        window.location.href =
-            "{{ route('booking.mobil', $mobil->slug) }}" +
-            "?mulai=" + mulai +
-            "&selesai=" + selesai;
+       window.location.href =
+    "/booking/{{ $mobil->id_mobil }}"
     }
 
     function toggleProfileMenu() {
-        document.getElementById('profileDropdown').classList.toggle('show');
+
+        document
+            .getElementById('profileDropdown')
+            .classList
+            .toggle('show');
     }
 
 </script>
