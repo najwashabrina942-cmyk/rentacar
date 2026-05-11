@@ -1,6 +1,6 @@
-@php
-   $mulai = old('tanggal_mulai');
-   $selesai = old('tanggal_selesai');
+@giphp
+    $mulai = $mulai ?? null;
+    $selesai = $selesai ?? null;
 
     $durasi = 0;
     $totalMobil = 0;
@@ -122,7 +122,8 @@
                     </div>
                 </div>
 
-                <form action="{{ route('booking.store', $mobil->slug) }}" method="POST"> @csrf
+                <form action="{{ route('booking.store', $mobil->slug) }}" method="POST">
+                    @csrf
 
                     <div class="booking-two-col">
                         <div>
@@ -131,7 +132,7 @@
                             <input
                                 type="datetime-local"
                                 name="tanggal_mulai"
-                                value="{{ request('mulai') ? request('mulai') . 'T09:00' : '' }}"
+                                value="{{ $mulai }}"
                                 required
                             >
                         </div>
@@ -142,7 +143,7 @@
                             <input
                                 type="datetime-local"
                                 name="tanggal_selesai"
-                                value="{{ request('selesai') ? request('selesai') . 'T09:00' : '' }}"
+                                value="{{ $selesai }}"
                                 required
                             >
                         </div>

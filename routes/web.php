@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MobilController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/daftar-mobil', [HomeController::class, 'daftarMobil'])->name('daftar.mobil');
